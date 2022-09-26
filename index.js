@@ -1,7 +1,15 @@
+/* eslint-disable no-unused-vars */
+
+import { DateTime } from './modules/date_package.js';
 import Book from './modules/book-class.js';
 import * as navBarLinks from './modules/nav_bars.js';
 
 const viewSection = document.querySelector('#view_section');
+const navParagraph = document.querySelector('.nav_p');
+
+const date = DateTime.fromISO((new Date()).toISOString());
+const humanReadable = date.toLocaleString(DateTime.DATETIME_MED);
+navParagraph.textContent = humanReadable;
 
 document.addEventListener('DOMContentLoaded', Book.showBook);
 
@@ -29,5 +37,3 @@ viewSection.addEventListener('click', (e) => {
 
   Book.removeBookFromLocalStorage(e.target.id);
 });
-
-navBarLinks();
